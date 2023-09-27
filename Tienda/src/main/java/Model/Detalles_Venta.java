@@ -55,4 +55,6 @@ public class Detalles_Venta {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
+
+    
 }
