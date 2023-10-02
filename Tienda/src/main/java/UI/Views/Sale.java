@@ -12,8 +12,6 @@ public class Sale extends javax.swing.JPanel {
 
         Bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        Factura = new javax.swing.JButton();
-        Nota_venta = new javax.swing.JButton();
         Consumidor_venta = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -32,26 +30,6 @@ public class Sale extends javax.swing.JPanel {
         Bg.setPreferredSize(new java.awt.Dimension(766, 520));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
-
-        Factura.setBackground(new java.awt.Color(255, 102, 102));
-        Factura.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        Factura.setForeground(new java.awt.Color(255, 255, 255));
-        Factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic-ad_97607.png"))); // NOI18N
-        Factura.setText("Factura");
-        Factura.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        Factura.setBorderPainted(false);
-        Factura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Factura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        Nota_venta.setBackground(new java.awt.Color(255, 102, 102));
-        Nota_venta.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        Nota_venta.setForeground(new java.awt.Color(255, 255, 255));
-        Nota_venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic-ad_97607.png"))); // NOI18N
-        Nota_venta.setText("Nota de venta");
-        Nota_venta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        Nota_venta.setBorderPainted(false);
-        Nota_venta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Nota_venta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         Consumidor_venta.setBackground(new java.awt.Color(255, 102, 102));
         Consumidor_venta.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -96,20 +74,14 @@ public class Sale extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Factura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Nota_venta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Consumidor_venta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Nota_venta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Consumidor_venta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -173,7 +145,6 @@ public class Sale extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addGap(10, 10, 10)))
                 .addGap(51, 51, 51)
@@ -197,8 +168,6 @@ public class Sale extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
     private javax.swing.JButton Consumidor_venta;
-    private javax.swing.JButton Factura;
-    private javax.swing.JButton Nota_venta;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

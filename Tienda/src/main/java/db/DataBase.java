@@ -5,27 +5,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBase {
+    private final String url = "jdbc:sqlite:db/database.bd";
     private Connection conn;
     
-    public void establecerConexion() {
-        try {
-            String url = "jdbc:sqlite:db/database.bd";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {  
-            System.out.println(e.getMessage());  
-        }   
-    }
-    
-    public Connection obtenerConexion(){
+    public Connection obtenerConexion() {
+        if (conn == null) {
+            try {
+                conn = DriverManager.getConnection(url);
+            } catch (SQLException e) {
+                System.out.println("Error al establecer la conexión: " + e.getMessage());
+            }
+        }
         return conn;
     }
     
     public void cerrarConexion() {
-        try {
-            obtenerConexion().close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            } finally {
+                conn = null;
+            }
         }
     }
 }
