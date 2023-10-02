@@ -45,6 +45,8 @@ public class Dashboard extends javax.swing.JFrame {
         Venta = new javax.swing.JButton();
         Agregar_p = new javax.swing.JButton();
         Eliminar_p = new javax.swing.JButton();
+        Modificar_p = new javax.swing.JButton();
+        Modificar_v = new javax.swing.JButton();
         Revisar_Ventas = new javax.swing.JButton();
         Inventario = new javax.swing.JButton();
         Contend = new javax.swing.JPanel();
@@ -96,6 +98,11 @@ public class Dashboard extends javax.swing.JFrame {
         Agregar_p.setBorderPainted(false);
         Agregar_p.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Agregar_p.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregar_p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregar_pActionPerformed(evt);
+            }
+        });
 
         Eliminar_p.setBackground(new java.awt.Color(255, 102, 102));
         Eliminar_p.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -106,6 +113,31 @@ public class Dashboard extends javax.swing.JFrame {
         Eliminar_p.setBorderPainted(false);
         Eliminar_p.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Eliminar_p.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        Modificar_p.setBackground(new java.awt.Color(255, 102, 102));
+        Modificar_p.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        Modificar_p.setForeground(new java.awt.Color(255, 255, 255));
+        Modificar_p.setIcon(new javax.swing.ImageIcon(getClass().getResource("/twocirclingarrows1_120592 (1).png"))); // NOI18N
+        Modificar_p.setText("Modificar Producto");
+        Modificar_p.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        Modificar_p.setBorderPainted(false);
+        Modificar_p.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Modificar_p.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Modificar_p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Modificar_pActionPerformed(evt);
+            }
+        });
+
+        Modificar_v.setBackground(new java.awt.Color(255, 102, 102));
+        Modificar_v.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        Modificar_v.setForeground(new java.awt.Color(255, 255, 255));
+        Modificar_v.setIcon(new javax.swing.ImageIcon(getClass().getResource("/twocirclingarrows1_120592 (1).png"))); // NOI18N
+        Modificar_v.setText("Modificar Ventas");
+        Modificar_v.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        Modificar_v.setBorderPainted(false);
+        Modificar_v.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Modificar_v.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         Revisar_Ventas.setBackground(new java.awt.Color(255, 102, 102));
         Revisar_Ventas.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -137,6 +169,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(Eliminar_p, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(Revisar_Ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Modificar_p, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Modificar_v, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +183,15 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Agregar_p, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Eliminar_p, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Modificar_p, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addComponent(Modificar_v, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Revisar_Ventas, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Inventario, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addGap(155, 155, 155))
+                .addGap(27, 27, 27))
         );
 
         Contend.setBackground(new java.awt.Color(255, 255, 255));
@@ -208,6 +246,14 @@ public class Dashboard extends javax.swing.JFrame {
         ShowJPanel(new Sale());
     }//GEN-LAST:event_VentaActionPerformed
 
+    private void Agregar_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregar_pActionPerformed
+        ShowJPanel(new Add_Product());
+    }//GEN-LAST:event_Agregar_pActionPerformed
+
+    private void Modificar_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modificar_pActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Modificar_pActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatMaterialLighterIJTheme.setup();
@@ -228,6 +274,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton Inicio;
     private javax.swing.JButton Inventario;
     private javax.swing.JPanel Menu;
+    private javax.swing.JButton Modificar_p;
+    private javax.swing.JButton Modificar_v;
     private javax.swing.JButton Revisar_Ventas;
     private javax.swing.JButton Venta;
     // End of variables declaration//GEN-END:variables
