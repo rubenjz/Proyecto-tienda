@@ -3,8 +3,21 @@ package Model;
 public class Venta {
     private int id_Venta;
     private int id_Cliente;
-    private int fecha;
-    private int total;
+    private String fecha;
+    private double total;
+
+    public Venta(int id_Venta, int id_Cliente, String fecha, double total) {
+        this.id_Venta = id_Venta;
+        this.id_Cliente = id_Cliente;
+        this.fecha = fecha;
+        this.total = total;
+    }
+
+    public Venta(int id_Cliente, String fecha, double total) {
+        this.id_Cliente = id_Cliente;
+        this.fecha = fecha;
+        this.total = total;
+    }
 
     public int getId_Venta() {
         return id_Venta;
@@ -22,19 +35,20 @@ public class Venta {
         this.id_Cliente = id_Cliente;
     }
 
-    public int getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
+
 }

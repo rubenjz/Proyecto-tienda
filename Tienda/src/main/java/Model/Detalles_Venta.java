@@ -5,8 +5,22 @@ public class Detalles_Venta {
     private int id_Venta;
     private int id_Producto;
     private int cantidad;
-    private double precio_Unitario;
     private double subtotal;
+
+    public Detalles_Venta(int id_Venta, int id_Producto, int cantidad, double subtotal) {
+        this.id_Venta = id_Venta;
+        this.id_Producto = id_Producto;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+    }
+
+    public Detalles_Venta(int id_Detalles_Venta, int id_Venta, int id_Producto, int cantidad, double subtotal) {
+        this.id_Detalles_Venta = id_Detalles_Venta;
+        this.id_Venta = id_Venta;
+        this.id_Producto = id_Producto;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+    }
 
     public int getId_Detalles_Venta() {
         return id_Detalles_Venta;
@@ -40,14 +54,6 @@ public class Detalles_Venta {
         this.cantidad = cantidad;
     }
 
-    public double getPrecio_Unitario() {
-        return precio_Unitario;
-    }
-
-    public void setPrecio_Unitario(double precio_Unitario) {
-        this.precio_Unitario = precio_Unitario;
-    }
-
     public double getSubtotal() {
         return subtotal;
     }
@@ -56,5 +62,4 @@ public class Detalles_Venta {
         this.subtotal = subtotal;
     }
 
-    
 }

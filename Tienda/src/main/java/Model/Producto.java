@@ -9,6 +9,25 @@ public class Producto {
     private double costo_compra;
     private int activo;
 
+    public Producto(int id_Producto, int codigo, String nombre, int cantidad, double precio_venta, double costo_compra, int activo) {
+        this.id_Producto = id_Producto;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio_venta = precio_venta;
+        this.costo_compra = costo_compra;
+        this.activo = activo;
+    }
+
+    public Producto(int codigo, String nombre, int cantidad, double precio_venta, double costo_compra) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio_venta = precio_venta;
+        this.costo_compra = costo_compra;
+    }
+    
+
     public int getId_Producto() {
         return id_Producto;
     }

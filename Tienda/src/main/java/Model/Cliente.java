@@ -6,6 +6,19 @@ public class Cliente {
     private String last_Name;
     private String cedula;
 
+    public Cliente(String first_Name, String last_Name, String cedula) {
+        this.first_Name = first_Name;
+        this.last_Name = last_Name;
+        this.cedula = cedula;
+    }
+
+    public Cliente(int id_Cliente, String first_Name, String last_Name, String cedula) {
+        this.id_Cliente = id_Cliente;
+        this.first_Name = first_Name;
+        this.last_Name = last_Name;
+        this.cedula = cedula;
+    }
+
     public int getId_Cliente() {
         return id_Cliente;
     }

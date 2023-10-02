@@ -14,29 +14,29 @@ public class DAOClienteImpl extends DataBase implements DAOCliente {
 
     @Override
     public void registrar(Cliente cliente) {
-        String query = "INSERT INTO Cliente (first_Name, last_Name, cedula) VALUES (?, ?, ?)";
+        String query = "INSERT INTO Cliente (First_Name, Last_Name, Cedula) VALUES (?, ?, ?)";
         try (Connection conn = obtenerConexion();
-             PreparedStatement ps = conn.prepareStatement(query)) {
+                PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, cliente.getFirst_Name());
             ps.setString(2, cliente.getLast_Name());
             ps.setString(3, cliente.getCedula());
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error al registrar Cliente: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             cerrarConexion();
         }
     }
 
     @Override
-    public void eliminar(Cliente cliente) {
+    public void eliminar(String cedula) {
         String query = "DELETE FROM Cliente WHERE id_Cliente = ?";
         try (Connection conn = obtenerConexion();
-             PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, cliente.getCedula());
+                PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, cedula);
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error al eliminar cliente: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             cerrarConexion();
         }
@@ -47,18 +47,16 @@ public class DAOClienteImpl extends DataBase implements DAOCliente {
         List<Cliente> ListCliente = new ArrayList();
         String query = "SELECT * FROM Cliente";
         try (Connection conn = obtenerConexion();
-             PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet resultSet = ps.executeQuery()) {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ResultSet resultSet = ps.executeQuery()) {
             while (resultSet.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setId_Cliente(resultSet.getInt("id_Cliente"));
-                cliente.setFirst_Name(resultSet.getString("first_Name"));
-                cliente.setLast_Name(resultSet.getString("last_Name"));
-                cliente.setCedula(resultSet.getString("cedula"));
-                ListCliente.add(cliente);
+                ListCliente.add(new Cliente(resultSet.getInt("ID_Cliente"),
+                        resultSet.getString("Nombres"),
+                        resultSet.getString("Apellidos"),
+                        resultSet.getString("Cedula")));
             }
         } catch (SQLException e) {
-            System.out.println("Error al mostrar la lista: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             cerrarConexion();
         }
