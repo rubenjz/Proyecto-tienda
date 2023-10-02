@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBase {
-    private final String url = "jdbc:sqlite:db/database.bd";
+    private final String url = "jdbc:sqlite:db/database_copia.db";
     private Connection conn;
     
     public Connection obtenerConexion() {
