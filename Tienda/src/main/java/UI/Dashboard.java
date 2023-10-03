@@ -113,6 +113,11 @@ public class Dashboard extends javax.swing.JFrame {
         Eliminar_p.setBorderPainted(false);
         Eliminar_p.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Eliminar_p.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Eliminar_p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_pActionPerformed(evt);
+            }
+        });
 
         Modificar_p.setBackground(new java.awt.Color(255, 102, 102));
         Modificar_p.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -253,6 +258,10 @@ public class Dashboard extends javax.swing.JFrame {
     private void Modificar_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modificar_pActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Modificar_pActionPerformed
+
+    private void Eliminar_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_pActionPerformed
+        ShowJPanel(new Delete_Product());
+    }//GEN-LAST:event_Eliminar_pActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
