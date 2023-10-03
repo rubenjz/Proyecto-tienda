@@ -106,7 +106,7 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
     }
 
     @Override
-    public void eliminar(int id_Producto) {
+    public void eliminarConID(int id_Producto) {
         String query = "UPDATE Producto SET Activo = ? WHERE ID_Producto = ?";
         try (Connection conn = obtenerConexion();
                 PreparedStatement ps = conn.prepareStatement(query)) {
@@ -120,6 +120,36 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
         }
     }
 
+    @Override
+    public void eliminarConNombre(String nombre_Producto) {
+        String query = "UPDATE Producto SET Activo = ? WHERE Nombre = ?";
+        try (Connection conn = obtenerConexion();
+                PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, 0);
+            ps.setString(2, nombre_Producto);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }
+
+    @Override
+    public void eliminarConCodigo(int Codigo) {
+        String query = "UPDATE Producto SET Activo = ? WHERE Codigo = ?";
+        try (Connection conn = obtenerConexion();
+                PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, 0);
+            ps.setInt(2, Codigo);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }
+    
     @Override
     public List<Producto> listar() {
         int activo;
@@ -147,5 +177,4 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
         }
         return ListProducto;
     }
-
 }

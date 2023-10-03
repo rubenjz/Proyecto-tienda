@@ -190,13 +190,20 @@ public class Add_Product extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String Text;
-        String nombre = nombreP.getText();
+        String nombre = null;
         double costoCompra = 0;
         double precioVenta = 0;
         int cantidad = 0;
         int codigo = 0;
         
         try {
+            Text = nombreP.getText();
+            if (!Text.isEmpty()) {
+                nombre = nombreP.getText();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "El campo del nombre no debe quedar vacio\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             Text = costoCompraP.getText();
             if (!Text.isEmpty()) {
                 costoCompra = Double.parseDouble(costoCompraP.getText());
