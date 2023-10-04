@@ -123,7 +123,7 @@ public class Dashboard extends javax.swing.JFrame {
         Modificar_p.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         Modificar_p.setForeground(new java.awt.Color(255, 255, 255));
         Modificar_p.setIcon(new javax.swing.ImageIcon(getClass().getResource("/twocirclingarrows1_120592 (1).png"))); // NOI18N
-        Modificar_p.setText("Modificar Producto");
+        Modificar_p.setText("Ver y Modificar Producto");
         Modificar_p.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         Modificar_p.setBorderPainted(false);
         Modificar_p.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -153,6 +153,11 @@ public class Dashboard extends javax.swing.JFrame {
         Revisar_Ventas.setBorderPainted(false);
         Revisar_Ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Revisar_Ventas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Revisar_Ventas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Revisar_VentasActionPerformed(evt);
+            }
+        });
 
         Inventario.setBackground(new java.awt.Color(255, 102, 102));
         Inventario.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -256,12 +261,16 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Agregar_pActionPerformed
 
     private void Modificar_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modificar_pActionPerformed
-        // TODO add your handling code here:
+        ShowJPanel(new Edit_Product());
     }//GEN-LAST:event_Modificar_pActionPerformed
 
     private void Eliminar_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_pActionPerformed
         ShowJPanel(new Delete_Product());
     }//GEN-LAST:event_Eliminar_pActionPerformed
+
+    private void Revisar_VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Revisar_VentasActionPerformed
+        ShowJPanel(new Show_Sales());
+    }//GEN-LAST:event_Revisar_VentasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
