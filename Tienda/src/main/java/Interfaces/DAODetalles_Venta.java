@@ -10,4 +10,5 @@ public interface DAODetalles_Venta {
     public void actualizarSubtotal(int id_Detalles_Venta, double subtotal);
     public void eliminar(int id_Detalles_Venta);
     public List<Detalles_Venta> listar();
+    public Detalles_Venta obtenerDetallesVenta(int id_Detalles_Venta);
 }

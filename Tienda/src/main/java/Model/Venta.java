@@ -1,19 +1,24 @@
 package Model;
 
+import java.sql.Date;
+
 public class Venta {
     private int id_Venta;
     private int id_Cliente;
     private String fecha;
     private double total;
 
-    public Venta(int id_Venta, int id_Cliente, String fecha, double total) {
-        this.id_Venta = id_Venta;
+    public Venta() {
+    }
+
+    public Venta(int id_Cliente, String fecha, double total) {
         this.id_Cliente = id_Cliente;
         this.fecha = fecha;
         this.total = total;
     }
 
-    public Venta(int id_Cliente, String fecha, double total) {
+    public Venta(int id_Venta, int id_Cliente, String fecha, double total) {
+        this.id_Venta = id_Venta;
         this.id_Cliente = id_Cliente;
         this.fecha = fecha;
         this.total = total;

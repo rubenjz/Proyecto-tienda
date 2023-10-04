@@ -13,5 +13,9 @@ public interface DAOProducto {
     public void eliminarConID(int id_Producto);
     public void eliminarConNombre(String nombre_Producto);
     public void eliminarConCodigo(int Codigo);
+    public String obtenerNombre(int id_Producto, int codigo, String nombre);
+    public int obtenerCodigo(int id_Producto, int codigo, String nombre);
+    public double obtenerPrecio(int id_Producto, int codigo, String nombre);
     public List<Producto> listar();
+    public Producto obtenerProducto(int id_Producto, int codigo, String nombre);
 }
