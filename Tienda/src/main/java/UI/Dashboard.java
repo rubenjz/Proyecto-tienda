@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import UI.Views.*;
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +19,7 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         InitializeStyles();
         initContend();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/shop.png")));
     }
 
     private void InitializeStyles() {
