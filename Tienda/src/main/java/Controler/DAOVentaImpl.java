@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +16,14 @@ public class DAOVentaImpl extends DataBase implements DAOVenta {
     @Override
     public void registrar(Venta venta) {
         String query = "INSERT INTO Venta (ID_Cliente, Fecha, Total) VALUES (?, ?, ?)";
+        
         try (Connection conn = obtenerConexion();
                 PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, venta.getId_Cliente());
             ps.setString(2, venta.getFecha());
             ps.setDouble(3, venta.getTotal());
             ps.executeUpdate();
+            
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         } finally {
@@ -75,20 +78,16 @@ public class DAOVentaImpl extends DataBase implements DAOVenta {
 
     @Override
     public List<Venta> listar() {
-        int activo;
         List<Venta> ListVenta = new ArrayList();
-        String query = "SELECT * FROM Producto";
+        String query = "SELECT * FROM Venta";
         try (Connection conn = obtenerConexion();
                 PreparedStatement ps = conn.prepareStatement(query);
                 ResultSet resultSet = ps.executeQuery()) {
             while (resultSet.next()) {
-                activo = resultSet.getInt("Activo");
-                if (activo == 1) {
-                    ListVenta.add(new Venta(resultSet.getInt("ID_Venta"),
-                        resultSet.getInt("ID_Cliente"),
-                        resultSet.getString("Fecha"),
-                        resultSet.getDouble("Total")));
-                }
+                ListVenta.add(new Venta(resultSet.getInt("ID_Venta"),
+                    resultSet.getInt("ID_Cliente"),
+                    resultSet.getString("Fecha"),
+                    resultSet.getDouble("Total")));
             }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
@@ -96,6 +95,51 @@ public class DAOVentaImpl extends DataBase implements DAOVenta {
             cerrarConexion();
         }
         return ListVenta;
+    }
+
+    @Override
+    public Venta obtenerVenta(int id_Venta) {
+        Venta venta = null;
+        String query = "SELECT * FROM Venta WHERE ID_Venta = ?";
+        try (Connection conn = obtenerConexion();
+                PreparedStatement ps = conn.prepareStatement(query)) {
+            
+            ps.setInt(1, id_Venta);
+            
+            try(ResultSet resultSet = ps.executeQuery()){
+                if (resultSet.next()) {
+                    venta = new Venta(resultSet.getInt("ID_Venta"),
+                        resultSet.getInt("ID_Cliente"),
+                        resultSet.getString("Fecha"),
+                        resultSet.getDouble("Total"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+        return venta;
+    }
+
+    @Override
+    public int obtenerUltimaVenta() {
+        String selectQuery = "SELECT MAX(ID_Venta) FROM VENTA";
+        int ventaID = 0;
+        
+        try (Connection conn = obtenerConexion();
+                PreparedStatement ps = conn.prepareStatement(selectQuery);
+                ResultSet rs = ps.executeQuery()) {
+            
+            if (rs.next()) {
+                ventaID = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+        return ventaID;
     }
     
 }

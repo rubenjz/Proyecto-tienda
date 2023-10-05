@@ -9,4 +9,6 @@ public interface DAOVenta {
     public void modificarFecha(int id_Venta, String nuevaFecha);
     public void modificarTotal(int id_Venta, double total);
     public List<Venta> listar();
+    public Venta obtenerVenta(int id_Venta);
+    public int obtenerUltimaVenta();
 }
