@@ -17,7 +17,7 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
         String query = "INSERT INTO Producto (Codigo, Nombre, Cantidad, Precio_venta, Costo_compra) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = obtenerConexion();
                 PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setInt(1, producto.getCodigo());
+            ps.setLong(1, producto.getCodigo());
             ps.setString(2, producto.getNombre());
             ps.setInt(3, producto.getCantidad());
             ps.setDouble(4, producto.getPrecio_venta());
@@ -31,11 +31,11 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
     }
 
     @Override
-    public void modificarCodigo(int id_Producto, int nuevoCodigo) {
+    public void modificarCodigo(int id_Producto, long nuevoCodigo) {
         String query = "UPDATE Producto SET Codigo = ? WHERE ID_Producto = ?";
         try (Connection conn = obtenerConexion();
                 PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setInt(1, nuevoCodigo);
+            ps.setLong(1, nuevoCodigo);
             ps.setInt(2, id_Producto);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -136,12 +136,12 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
     }
 
     @Override
-    public void eliminarConCodigo(int Codigo) {
+    public void eliminarConCodigo(long Codigo) {
         String query = "UPDATE Producto SET Activo = ? WHERE Codigo = ?";
         try (Connection conn = obtenerConexion();
                 PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, 0);
-            ps.setInt(2, Codigo);
+            ps.setLong(2, Codigo);
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
@@ -151,21 +151,21 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
     }
     
     @Override
-    public String obtenerNombre(int id_Producto, int codigo, String nombre) {
+    public String obtenerNombre(int id_Producto, long codigo, String nombre) {
         
         return null;
         
     }
 
     @Override
-    public int obtenerCodigo(int id_Producto, int codigo, String nombre) {
+    public int obtenerCodigo(int id_Producto, long codigo, String nombre) {
         
         return 0;
         
     }
 
     @Override
-    public double obtenerPrecio(int id_Producto, int codigo, String nombre) {
+    public double obtenerPrecio(int id_Producto, long codigo, String nombre) {
         double precio = 0;
         String query = null;
         
@@ -183,7 +183,7 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
             if (id_Producto != 0) {
                 ps.setInt(1, id_Producto);
             } else if (codigo != 0) {
-                ps.setInt(1, codigo);
+                ps.setLong(1, codigo);
             } else if (!nombre.isEmpty()) {
                 ps.setString(1, nombre);
             }
@@ -213,7 +213,7 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
                 activo = resultSet.getInt("Activo");
                 if (activo == 1) {
                     ListProducto.add(new Producto(resultSet.getInt("ID_Producto"),
-                        resultSet.getInt("Codigo"),
+                        resultSet.getLong("Codigo"),
                         resultSet.getString("Nombre"),
                         resultSet.getInt("Cantidad"),
                         resultSet.getDouble("Precio_venta"),
@@ -230,7 +230,7 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
     }
 
     @Override
-    public Producto obtenerProducto(int id_Producto, int codigo, String nombre) {
+    public Producto obtenerProducto(int id_Producto, long codigo, String nombre) {
         Producto producto = null;
         String query = null;
         
@@ -248,7 +248,7 @@ public class DAOProductoImpl extends DataBase implements DAOProducto{
             if (id_Producto != 0) {
                 ps.setInt(1, id_Producto);
             } else if (codigo != 0) {
-                ps.setInt(1, codigo);
+                ps.setLong(1, codigo);
             } else if (!nombre.isEmpty()) {
                 ps.setString(1, nombre);
             }

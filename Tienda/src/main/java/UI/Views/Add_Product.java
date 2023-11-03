@@ -194,7 +194,7 @@ public class Add_Product extends javax.swing.JPanel {
         double costoCompra = 0;
         double precioVenta = 0;
         int cantidad = 0;
-        int codigo = 0;
+        long codigo = 0;
         
         try {
             Text = nombreP.getText();
@@ -224,7 +224,7 @@ public class Add_Product extends javax.swing.JPanel {
             }
             Text = codigoP.getText();
             if (!Text.isEmpty()) {
-                codigo = Integer.parseInt(Text);
+                codigo = Long.parseLong(Text);
             }
         } catch (NumberFormatException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Revise si ingreso una coma o\ncarácter en un campo numérico", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);

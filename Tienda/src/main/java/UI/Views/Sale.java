@@ -9,6 +9,7 @@ import Interfaces.DAOVenta;
 import Model.Detalles_Venta;
 import Model.Producto;
 import Model.Venta;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -42,12 +43,15 @@ public class Sale extends javax.swing.JPanel {
         totalmsg = new javax.swing.JLabel();
         VentaButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jTextCodigo = new javax.swing.JTextField();
         nombrePBox = new javax.swing.JComboBox<>();
+        AgregarButton = new javax.swing.JButton();
+        DeleteButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cantSpinner = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        AgregarButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(788, 650));
 
@@ -113,10 +117,35 @@ public class Sale extends javax.swing.JPanel {
 
         jLabel1.setText("Producto:");
 
+        jTextCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCodigoActionPerformed(evt);
+            }
+        });
+        jTextCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodigoKeyPressed(evt);
+            }
+        });
+
         nombrePBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         nombrePBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombrePBoxActionPerformed(evt);
+            }
+        });
+
+        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add_circle_create_expand_new_plus_icon_123218.png"))); // NOI18N
+        AgregarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarButtonActionPerformed(evt);
+            }
+        });
+
+        DeleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trash_bin_icon-icons.com_67981.png"))); // NOI18N
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
             }
         });
 
@@ -132,12 +161,7 @@ public class Sale extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add_circle_create_expand_new_plus_icon_123218.png"))); // NOI18N
-        AgregarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarButtonActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("Código:");
 
         javax.swing.GroupLayout BgLayout = new javax.swing.GroupLayout(Bg);
         Bg.setLayout(BgLayout);
@@ -147,41 +171,56 @@ public class Sale extends javax.swing.JPanel {
                 .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
                     .addGroup(BgLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cantSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombrePBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BgLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(19, 19, 19))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)))
+                        .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cantSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(nombrePBox, 0, 150, Short.MAX_VALUE)
+                            .addComponent(jTextCodigo))
                         .addGap(45, 45, 45)
                         .addComponent(AgregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(BgLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
                 .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
                         .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(nombrePBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(nombrePBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(33, 33, 33)
+                        .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(34, 34, 34)
                         .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(cantSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
-                        .addComponent(AgregarButton)
-                        .addGap(10, 10, 10)))
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1)
+                    .addGroup(BgLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DeleteButton)
+                            .addComponent(AgregarButton))))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                 .addGap(39, 39, 39))
         );
 
@@ -203,12 +242,38 @@ public class Sale extends javax.swing.JPanel {
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
         LoadProducts();
+        jTextCodigo.requestFocus();
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void VentaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentaButtonActionPerformed
         executeSale();
         CleanScreen();
     }//GEN-LAST:event_VentaButtonActionPerformed
+
+    private void jTextCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoActionPerformed
+        
+    }//GEN-LAST:event_jTextCodigoActionPerformed
+
+    private void jTextCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodigoKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            // Realizar la acción deseada al presionar Enter
+            LoadProducts();
+            jTextCodigo.setText("");
+        }
+    }//GEN-LAST:event_jTextCodigoKeyPressed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        int c = 0;
+        for (int i: jTable1.getSelectedRows()) {
+            try {
+                model.removeRow(i - c);
+                c++;
+                LoadTotal();
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar productos\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void rellenarComboBox() {
         try {
@@ -238,49 +303,99 @@ public class Sale extends javax.swing.JPanel {
     
     private void LoadProducts() {
         String productName = nombrePBox.getSelectedItem().toString();
+        String codigo = jTextCodigo.getText();
         
-        if (!productName.isEmpty()) {
-            try {
-                DAOProducto dao = new DAOProductoImpl();
+        if (!codigo.isEmpty() && !productName.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe colocar solo el nombre o el codigo \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (codigo.isEmpty() && productName.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe escoger un producto o ingresar el codigo\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (!codigo.isEmpty()) {
+            LoadCodigo(codigo);
+        } else {
+            LoadName(productName);
+        }
+    }
+    
+    private void LoadCodigo(String codigo_String) {
+        try {
+            long codigo = Long.parseLong(codigo_String);
 
-                int rowCount = model.getRowCount();
-                boolean found = false;
-                
-                for (int i = 0; i < rowCount; i++) {
-                    if (model.getValueAt(i, 0).equals(productName)) {
-                        found = true;
-                        int existingQuantity = (int) model.getValueAt(i, 1);
-                        double price = dao.obtenerPrecio(0,0,productName);
-                        int newQuantity = existingQuantity + (int) cantSpinner.getValue();
-                        double totalPrice = price * newQuantity;
-
-                        model.setValueAt(newQuantity, i, 1);
-                        model.setValueAt(totalPrice, i, 3);
-                        break;
-                    }
-                }
+            DAOProducto dao = new DAOProductoImpl();
+            Producto producto = dao.obtenerProducto(0, codigo, null);
             
-                if (!found) {
-                    Producto producto;
-                    producto = dao.obtenerProducto(0, 0, nombrePBox.getSelectedItem().toString());
-                    
-                    idProductos.add(producto.getId_Producto());
-                    Object[] rowData = new Object[]{
-                        producto.getNombre(),
-                        cantSpinner.getValue(),
-                        producto.getPrecio_venta(),
-                        producto.getPrecio_venta() * Double.parseDouble(cantSpinner.getValue().toString())
-                    };
-                    model.addRow(rowData);
+            int rowCount = model.getRowCount();
+            boolean found = false;
+            
+            for (int i = 0; i < rowCount; i++) {
+                if (model.getValueAt(i, 0).equals(producto.getNombre())) {
+                    found = true;
+                    int existingQuantity = (int) model.getValueAt(i, 1);
+                    double price = producto.getPrecio_venta();
+                    int newQuantity = existingQuantity + (int) cantSpinner.getValue();
+                    double totalPrice = price * newQuantity;
+
+                    model.setValueAt(newQuantity, i, 1);
+                    model.setValueAt(totalPrice, i, 3);
+                    break;
                 }
-                
-                LoadTotal();
-            } catch (Exception e) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar productos\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
             
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe escoger un producto\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            if (!found) {
+                idProductos.add(producto.getId_Producto());
+                Object[] rowData = new Object[]{
+                    producto.getNombre(),
+                    cantSpinner.getValue(),
+                    producto.getPrecio_venta(),
+                    producto.getPrecio_venta() * Double.parseDouble(cantSpinner.getValue().toString())
+                };
+                model.addRow(rowData);
+            }
+            LoadTotal();
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El código debe contener solo numeros\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar productos\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void LoadName(String name) {
+        try {
+            DAOProducto dao = new DAOProductoImpl();
+
+            int rowCount = model.getRowCount();
+            boolean found = false;
+            
+            for (int i = 0; i < rowCount; i++) {
+                if (model.getValueAt(i, 0).equals(name)) {
+                    found = true;
+                    int existingQuantity = (int) model.getValueAt(i, 1);
+                    double price = dao.obtenerPrecio(0,0,name);
+                    int newQuantity = existingQuantity + (int) cantSpinner.getValue();
+                    double totalPrice = price * newQuantity;
+
+                    model.setValueAt(newQuantity, i, 1);
+                    model.setValueAt(totalPrice, i, 3);
+                    break;
+                }
+            }
+            
+            if (!found) {
+                Producto producto;
+                producto = dao.obtenerProducto(0, 0, nombrePBox.getSelectedItem().toString());
+                    
+                idProductos.add(producto.getId_Producto());
+                Object[] rowData = new Object[]{
+                    producto.getNombre(),
+                    cantSpinner.getValue(),
+                    producto.getPrecio_venta(),
+                    producto.getPrecio_venta() * Double.parseDouble(cantSpinner.getValue().toString())
+                };
+                model.addRow(rowData);
+            }
+            
+            LoadTotal();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar productos\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -343,14 +458,17 @@ public class Sale extends javax.swing.JPanel {
     private javax.swing.JButton AgregarButton;
     private javax.swing.JPanel Bg;
     private javax.swing.JButton Consumidor_venta;
+    private javax.swing.JButton DeleteButton;
     private javax.swing.JButton VentaButton;
     private javax.swing.JSpinner cantSpinner;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextCodigo;
     private javax.swing.JComboBox<String> nombrePBox;
     private javax.swing.JLabel totalmsg;
     // End of variables declaration//GEN-END:variables
