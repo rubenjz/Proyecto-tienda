@@ -1,18 +1,46 @@
 package Model;
 
 public class Producto {
+    private int id_Producto;
+    private long codigo;
     private String nombre;
     private int cantidad;
     private double precio_venta;
     private double costo_compra;
     private int activo;
 
-    public Producto(String nombre, int cantidad, double precio_venta, double costo_compra, int activo) {
+    public Producto(int id_Producto, long codigo, String nombre, int cantidad, double precio_venta, double costo_compra, int activo) {
+        this.id_Producto = id_Producto;
+        this.codigo = codigo;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio_venta = precio_venta;
         this.costo_compra = costo_compra;
         this.activo = activo;
+    }
+
+    public Producto(long codigo, String nombre, int cantidad, double precio_venta, double costo_compra) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio_venta = precio_venta;
+        this.costo_compra = costo_compra;
+    }
+
+    public int getId_Producto() {
+        return id_Producto;
+    }
+
+    public void setId_Producto(int id_Producto) {
+        this.id_Producto = id_Producto;
+    }
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -54,5 +82,5 @@ public class Producto {
     public void setActivo(int activo) {
         this.activo = activo;
     }
-    
+
 }
